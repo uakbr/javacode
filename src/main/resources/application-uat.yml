@@ -1,0 +1,82 @@
+## YAML Template.
+---
+server:
+  port: 8089
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://54.186.179.49:8081/eureka/
+#      defaultZone: http://34.213.120.191:8081/eureka/
+#      defaultZone: http://35.85.123.125:8081/eureka/
+#      defaultZone: http://52.27.66.160:8081/eureka/
+#      defaultZone: http://54.185.114.249:8081/eureka/
+#      defaultZone: http://52.41.155.163:8081/eureka/
+#      defaultZone: http://54.148.164.211:8081/eureka/
+#      defaultZone: http://34.213.205.21:8081/eureka/
+#      defaultZone: http://10.0.137.229:8081/eureka/
+  instance:
+    preferIpAddress: true
+
+spring:
+  profiles: uat
+  boot.admin.client.url: http://localhost:8084
+  boot.admin.client.username: admin
+  boot.admin.client.password: OpenSpace
+  boot.admin.client.instance.metadata.user.name: admin
+  boot.admin.client.instance.metadata.user.password: OpenSpace
+  application:
+    name: user-service
+  user:
+    datasource:
+      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/optimeyesai_user_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/vapt_optimeyesai_user_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/gl_optimeyesai_user_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/alt_optimeyesai_user_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/int_optimeyesai_user_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/gr_optimeyesai_user_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/oly_optimeyesai_user_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/optimeyesai_user_db_new_uat?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+      #username: admin
+      #password: OpenSpace
+      hikari:
+        connection-timeout: 50000
+        idle-timeout: 300000
+        max-lifetime: 900000
+        maximum-pool-size: 10
+        minimum-idle: 10
+        pool-name: ConnPool
+  authuser:
+    datasource:
+      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/optimeyesai_auth_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/vapt_optimeyesai_auth_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/gl_optimeyesai_auth_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/alt_optimeyesai_auth_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/gr_optimeyesai_auth_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/oly_optimeyesai_auth_db?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://optimeyesai-database-2.cwnblgccbhfg.us-west-2.rds.amazonaws.com:3306/optimeyesai_auth_db_new_uat?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+      #username: admin
+      #password: OpenSpace
+      hikari:
+        connection-timeout: 50000
+        idle-timeout: 300000
+        max-lifetime: 900000
+        maximum-pool-size: 10
+        minimum-idle: 10
+        pool-name: ConnPool
+  jpa:
+    #generate-ddl: true
+    #hibernate.ddl-auto: update
+    #show-sql: true
+    hibernate:
+      connection:
+        provider_class: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+
+logging:
+  level:
+    com.netflix.eureka: OFF
+    com.netflix.discovery: OFF
+  file:
+    name: /home/ubuntu/logs/optimeyesai/uat/user-service-uat.log

@@ -1,0 +1,56 @@
+## YAML Template.
+---
+spring:
+  profiles:
+    active: test
+  # MySQL Config
+  jpa:
+    database: default
+    properties:
+      hibernate:
+        format_sql: true
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+#=========================================================================================================================================================
+# Actuator
+#=========================================================================================================================================================
+
+management:
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#=========================================================================================================================================================
+# Response Compression And SSL Certification
+#=========================================================================================================================================================
+
+server:
+  compression:
+    ## Enable response compression
+    enabled: true
+    ## Minimum response where compression will kick in
+    min-response-size: 1KB
+    ## Mime types that should be compressed
+    mime-types: text/html, text/xml, text/plain, text/css, text/javascript, application/javascript, application/json
+
+
+##=========================================================================================================================================================
+## SLF4J and SL4J2 LOGGING
+##=========================================================================================================================================================
+logging:
+  level:
+    root: WARN
+    org.springframework.web: ERROR
+    com.openspaceservices: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} [ %M : %line] - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} [ %M : %line] - %msg%n"
+    dateformat: dd-MM-yyyy HH:mm:ss.SSS
+
+##=========================================================================================================================================================
+## 
+##=========================================================================================================================================================
